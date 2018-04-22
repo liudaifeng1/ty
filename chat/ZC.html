@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/ZC.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/register.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="register">
+			<h2 style="color: teal;">
+				注册
+			</h2>
+			<br />
+			<form id="mys">
+			<p>
+				<label for="accounter" style="color: teal;">用 户 名：</label>
+				<input type="text" name="accounter" id="accounter" class="input" value="" placeholder="输入用户名ID" onblur="account()" onfocus="focusa()" />
+				<br />
+				<span id="w1">
+					
+				</span>
+			</p>
+			<p>
+				<label for="pwd" style="color: teal;">密&nbsp;&nbsp;码：</label>
+				<input type="password" name="pwd" id="pwd" class="input" value="" placeholder="输入密码" disabled="disabled" onblur="py()" />
+				<br />
+				<span id="w2">
+					
+				</span>
+			</p>
+			<p>
+				<label for="pwd1" style="color: teal;">确认密码：</label>
+				<input type="password" name="pwd1" id="pwd1" class="input" placeholder="再次输入密码" disabled="disabled" onblur="pp()" />
+				<br />
+				<span id="w3">
+					
+				</span>
+			</p>
+			<p>
+				<label for="tx" style="color: teal;">头像：</label>
+				<input type="file" name="tx" id="tx" class="input" value=""  />
+				<br />
+				<span id="w4">
+					
+				</span>
+			</p>
+			<p>
+				<label for="zym" style="color: teal;">座 右 铭：</label>
+				<input type="text" name="zym" id="zym" class="input" value="" placeholder="输入座右铭" disabled="disabled" onblur="zym1()" onfocus="tx1()" />
+				<br />
+				<span id="w5">
+					
+				</span>
+			</p>
+			<p>
+				<label for="firstname" style="color: teal;">姓&nbsp;&nbsp;名：</label>
+				<input type="text" name="firstname" id="firstname" class="input" value="" placeholder="输入姓名" disabled="disabled" onblur="firstname1()" />
+				<br />
+				<span id="w6">
+					
+				</span>
+			</p>
+			<p>
+				<label for="sex" style="color: teal;">性&nbsp;&nbsp;别：</label>
+				<input type="text" name="sex" id="sex" class="input" value="" placeholder="输入性别" disabled="disabled" onblur="sex1()" />
+				<br />
+				<span id="w7">
+					
+				</span>
+			</p>
+			<p>
+				<label for="address" style="color: teal;">地&nbsp;&nbsp;址：</label>
+				<input type="text" name="address" id="address" class="input" value="" placeholder="输入地址" disabled="disabled" onblur="address1()" />
+				<br />
+				<span id="w8">
+					
+				</span>
+			</p>
+			<p>
+				<label for="code" style="color: teal;">验 证 码：</label>
+				<input type="text" name="code" id="code" class="input" value="" disabled="disabled" />
+				<br />
+				<br />
+				<img id="checkpic" src="ZC.php" style="height: 20px;" onclick="changing()" />
+				<br />
+				<span id="w9">
+					
+				</span>
+			</p>
+			<p>
+				<input type="button" name="zc" id="zc" value="注册" onclick="zc1()" />
+			</p>
+			</form>
+		</div>
+	</body>
+
+</html>

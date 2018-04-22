@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/css.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="bgBox" style="position: absolute;top: 0;left: 0;z-index: -1;">
+			<div id="bgDiv"></div>
+		</div>
+		<div class="chat" style="text-align: center;">
+			<div class="bt" style="margin: 0 auto;">
+				联系人
+			</div>
+			<div class="zho">
+				<div class="act1">
+					<img src="../SW/images/BingWallpaper.jpg" style="width: 100%;height:auto;"/>
+				</div>
+			</div>
+			<div class="fu">
+				<input type="search" name="id" id="id" value="" autofocus="" placeholder="ID number" style="display: none;" onblur="lose()" onkeypress="keyi()" />
+				<span class="glyphicon glyphicon-plus" style="color: rgb(0, 198, 255); font-size: 25px;position: relative;top: 6px;" onclick="search()"></span>
+				<span id="kong">&nbsp;&nbsp;&nbsp;</span>
+				<input type="search" name="ik" id="ik" value="" autofocus="" placeholder="ID number" style="display: none;" onblur="lose()" />
+				<span class="glyphicon glyphicon-search" style="color: rgb(0, 198, 255); font-size: 25px;position: relative;top: 6px;" onclick="add()"></span>
+			</div>
+		</div>
+		<div class="message">
+			<div class="mes">
+				会话消息
+			</div>
+			<span id="which" style="background: rgba(0,245,255,0.5);">
+				
+			</span>
+			<div class="huihua">
+				<p style="text-align: center;" id="ppt">
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				木 有 消 息！
+				</p>
+			</div>
+			<div class="send">
+				<input type="search" name="content" id="cont" value="" placeholder="Some Contents" onfocus="Load()" />
+				<input type="button" name="btn" id="btn" value="Send" onclick="Send()" />
+			</div>
+		</div>
+		<div id="ga">
+			
+		</div>
+		<div id="ng" style="width: 50%;height: auto;margin: 0 auto;background-color: #000000;z-index: 100;">
+			<form id="imgForm3">
+				<input type="file" name="a" id="a" value="" title="图片" onchange="ch()" />
+				<input type="file" name="b" id="b" value="" title="音乐" />
+				<input type="file" name="c" id="c" value="" title="视频" />
+				<input type="file" name="d" id="d" value="" title="文件" onchange="cll()" />
+			</form>
+		</div>
+		<div class="log" style="display: none;">
+			<img src="#" class="lol" style="width: 100%;height: auto;" onblur="mkp()"/>
+			<input type="button" name="qc" id="qc" value="关闭" onclick="mkp()" />
+		</div>
+		
+		<script src="js/chat.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
