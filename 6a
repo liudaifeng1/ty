@@ -1,0 +1,145 @@
+var counter1=0;
+var kt=-1;
+function aa() {
+	$.ajax({
+		type: "post",
+		url: "new_file11.php",
+		async: true,
+		data:{
+			counte:counter1++,
+			kt:20*kt++
+		},
+		success: function(data3) {
+			if(data3 == "null") {
+				alert("no content");
+			}
+			if(data3 == "wrong") {
+				alert("数据库访问错误");
+			}
+			if(data3 == "error") {
+				alert("数据查询错误");
+			}
+			if(data3 != "error" && data3 != "wrong" && data3 != "null") {
+				var da = data3;
+				console.log(da);
+				if(typeof da === 'string') {
+					document.getElementsByClassName("content")[0].innerHTML = "";
+					var ob = JSON.parse(da);
+					for(var uy = 0; uy < ob.length; uy++) {
+						var uyu = document.createElement("fieldset");
+						var ttt = document.createElement("legend");
+						ttt.innerHTML = "<img src='qqFace/arclist/62.gif' />";
+						var cv = document.createElement("div");
+						var att = document.createAttribute("class");
+						var df = document.createElement("img");
+						var yt = document.createAttribute("src");
+						var hy = document.createAttribute("class");
+
+//						var dianzan = document.createElement("div");
+//						var vfff = document.createAttribute("class");
+//						vfff.value = "dianzan";
+//						dianzan.setAttributeNode(vfff);
+//						var rrrr = document.createElement("img");
+//						var hyyyo = document.createAttribute("src");
+//						var cccc = document.createAttribute("class");
+//						hyyyo.value = "qqFace/arclist/62.gif";
+//						cccc.value = "heart";
+//						rrrr.setAttributeNode(cccc);
+//						rrrr.setAttributeNode(hyyyo);
+//						dianzan.appendChild(rrrr);
+
+						yt.value = ob[uy].img;
+						hy.value = "liu";
+						att.value = "wi";
+						cv.setAttributeNode(att);
+						df.setAttributeNode(yt);
+						df.setAttributeNode(hy);
+						cv.innerHTML = "<b>" + ob[uy].time + "</b>" + "<p>" + ob[uy].content + "</p>";
+						uyu.appendChild(ttt);
+						uyu.appendChild(cv);
+						if(ob[uy].fil != "#") {
+							var op1 = document.createElement("div");
+							var pp1 = document.createAttribute("class");
+							pp1.value = "pop";
+							op1.setAttributeNode(pp1);
+							var upo = document.createElement("button");
+							var iuo = document.createAttribute("class");
+							var uuuy = document.createTextNode("下载");
+							iuo.value = "jkk";
+							upo.setAttributeNode(iuo);
+							upo.appendChild(uuuy);
+							op1.appendChild(upo);
+							uyu.appendChild(op1);
+						}
+						if(ob[uy].music != "#") {
+							var op2 = document.createElement("div");
+							var pp2 = document.createAttribute("class");
+							pp2.value = "pp2";
+							op2.setAttributeNode(pp2);
+							var uyuy = document.createElement("audio");
+							var hyhy = document.createAttribute("src");
+							var iiu=document.createAttribute("controls");
+							var hhhh = document.createAttribute("class");
+							iiu.value="controls";
+							hhhh.value = "hhhh";
+							hyhy.value = ob[uy].music;
+							uyuy.setAttributeNode(hhhh);
+							uyuy.setAttributeNode(hyhy);
+							uyuy.setAttributeNode(iiu);
+							op2.appendChild(uyuy);
+							uyu.appendChild(op2);
+						}
+						if(ob[uy].video != "#") {
+							var op3 = document.createElement("div");
+							var pp3 = document.createAttribute("class");
+							pp3.value = "pp3";
+							op3.setAttributeNode(pp3);
+							var uyrt = document.createElement("video");
+							var hyhk = document.createAttribute("src");
+							var iiii = document.createAttribute("class");
+							var juyod=document.createAttribute("controls");
+							juyod.value=true;
+							iiii.value = "iiii";
+							hyhk.value = ob[uy].video;
+							uyrt.setAttributeNode(iiii);
+							uyrt.setAttributeNode(hyhk);
+							uyrt.setAttributeNode(juyod);
+							op3.appendChild(uyrt);
+							uyu.appendChild(op3);
+						}
+						uyu.appendChild(df);
+
+//						uyu.appendChild(dianzan);
+
+						document.getElementsByClassName("content")[0].appendChild(uyu);
+
+					}
+
+					var ghj = document.getElementsByClassName("liu");
+					for(var re = 0; re < ghj.length; re++) {
+						ghj[re].onerror = function() {
+							this.src = "images/404.jpg";
+						}
+
+					}
+				} else {
+					alert("呵呵");
+				}
+			}
+		},
+		error: function() {
+			alert("server is wrong");
+		}
+	});
+//	var yuyuo = document.getElementsByClassName("heart");
+//	console.log(yuyuo.length);
+//	for(var fdfd = 0; fdfd < yuyuo.length; fdfd++) {
+//		yuyuo[fdfd].onclick = function() {
+//			this.style.display = "none";
+//		}
+//	}
+	if(kt!=-1){
+		document.getElementById("refresh").value="加载更多";
+	}
+
+}
