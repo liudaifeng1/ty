@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="keywords" content="刘岱峰的表白墙" />
+		<meta name="description" content="刘岱峰的表白墙" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<!--<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">-->
+		<link rel="icon" type="image/x-icon" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509540738603&di=f637e8139ed4a2c20c4715ffcf7367c7&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fa71ea8d3fd1f4134daa36d322f1f95cad0c85ee1.jpg" />
+		<link rel="stylesheet" type="text/css" href="css/new_file6.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css" />
+		<script src="js/sonic.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!--<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+		<script src="js/new_file6.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/new_file6a.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://api.apowersoft.cn/video-downloader?lang=zh" defer></script>
+		<script src="http://api.apowersoft.cn/screen-recorder?lang=zh" defer></script>
+		<script src="http://api.apowersoft.cn/audio-recorder?lang=zh" defer></script>
+		<script src="http://api.apowersoft.cn/video-converter?lang=zh" defer></script>
+		<script src="http://api.apowersoft.cn/screenshot?lang=zh" defer></script>
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body id="body" ondblclick="clcl()">
+		<div id="bgBox" style="position: absolute;top: 0;left: 0;z-index: -1;">
+			<div id="bgDiv"></div>
+		</div>
+		<div class="content">
+			<div id="container">
+				<div id="in" style="text-align: center;"></div>
+			</div>
+		</div>
+		<span id="q">
+			
+		</span>
+		<div class="content1">
+
+			<div id="a" class="text" contenteditable="true" title="请输入你想说的话">
+
+			</div>
+			<div>
+				<form id="imgForm">
+					<p>
+						<input type="file" id="b" name="file" value="" style="border: royalblue solid 1px;" title="选择图片" /><br />
+					</p>
+					<p>
+						<input type="file" name="music" id="music" value="" style="border: royalblue solid 1px;" title="选择音频" /><br />
+					</p>
+					<p>
+						<input type="file" name="video" id="video" value="" style="border: royalblue solid 1px;" title="选择视频" /><br />
+					</p>
+					<p>
+						<input type="file" name="doc" id="doc" value="" style="border: royalblue solid 1px;" title="选择文件" /><br />
+					</p>
+					<input type="button" name="button" id="button" value="图书推荐" style="margin-top: 10px;" onclick="ay()" />
+					<input type="button" name="btnoad1" class="emotion" value="emoj" onclick="emoji()" />
+					<input type="button" name="refresh" id="refresh" value="刷&nbsp;&nbsp;新" onclick="aa()" />
+					<a href="JavaScript:history.go(-1)">回退</a>
+					<p>
+						<input type="image" name="audio" id="audio" value="" src="http://www.gbtags.com/gb/qrcode?t=http://liudaifeng.duapp.com/SW/new_file6.html&s=300" onclick="rebuild()" />
+					</p>
+				</form>
+			</div>
+			<img id="c" src="images/iconfont-tianjia.png" /><br />
+			<form id="mj" style="display: block;">
+				<label for="rr3">视频录制：</label>
+				<input type="radio" class="rr" name="rr" id="rr3" value="视频录制" />
+				<label for="rr4">截屏：</label>
+				<input type="radio" class="rr" name="rr" id="rr4" value="截屏" />
+				<label for="rr1">视频下载：</label>
+				<input type="radio" class="rr" name="rr" id="rr1" value="视频下载" /><br />
+				<label for="rr2">录音：</label>
+				<input type="radio" class="rr" name="rr" id="rr2" value="录音" />
+				<label for="rr5">视频格式转换：</label>
+				<input type="radio" class="rr" name="rr" id="rr5" value="视频格式转换" />
+			</form>
+			<p>
+				<div id="fg1" style="display: none;" style="display: none;" class="start-video-downloader start-video-downloader-purple"><input type="text" autocomplete="off"><button>免费下载</button></div>
+			</p>
+			<p>
+				<div id="fg2" style="display: none;" class="start-screen-recording recording-style-black">
+					<div>
+						<div class="rec-dot"></div><span>视频录制</span></div>
+				</div>
+			</p>
+			<p>
+				<div id="fg3" style="display: none;" class="start-audio-recording recording-style-black">
+					<div>
+						<div class="rec-dot"></div><span>音频录制</span></div>
+				</div>
+			</p>
+			<p>
+				<div id="fg4" style="display: none;" class="start-video-converter start-video-converter-sml"><span>点此导入文件</span>
+					<div class="start-video-converter-bg"></div>
+				</div>
+			</p>
+			<p>
+				<div id="fg5" style="display: none;" class="start-screen-capture recording-style-black">
+					<div>
+						<div class="rec-dot"></div><span>截屏</span></div>
+				</div>
+			</p>
+			<p>
+				<audio src="#" id="fff" controls="controls" style="width: 80%;display: none;"></audio>
+			</p>
+			<p>
+				<video src="#" id="vvv" controls="controls" style="width: 80%;display: none;">你的浏览器不支持video标签</video>
+			</p>
+			<div id="biaoq" style="background-color:white;">
+
+			</div>
+		</div>
+		<script type="text/javascript">
+			(function($) {
+				$(window).load(function() {
+					$(".content").mCustomScrollbar();
+				});
+			})(jQuery);
+
+			var loaders = [
+
+				{
+
+					width: 100,
+
+					height: 50,
+
+					padding: 10,
+
+					stepsPerFrame: 2,
+
+					trailLength: 1,
+
+					pointDistance: .03,
+
+					strokeColor: '#FF7B24',
+
+					step: 'fader',
+
+					multiplier: 2,
+
+					setup: function() {
+
+						this._.lineWidth = 5;
+
+					},
+
+					path: [
+
+						['arc', 10, 10, 10, -270, -90],
+
+						['bezier', 10, 0, 40, 20, 20, 0, 30, 20],
+
+						['arc', 40, 10, 10, 90, -90],
+
+						['bezier', 40, 0, 10, 20, 30, 0, 20, 20]
+
+					]
+
+				}
+
+			];
+
+			var d, a, container = document.getElementById('in');
+
+			for(var ii = -1, l = loaders.length; ++ii < l;) {
+
+				d = document.createElement('div');
+
+				d.className = 'l';
+
+				//	console.log(i);
+
+				a = new Sonic(loaders[ii]);
+
+				d.appendChild(a.canvas);
+
+				container.appendChild(d);
+
+				a.canvas.style.marginTop = (150 - a.fullHeight) / 2 + 'px';
+
+				a.canvas.style.marginLeft = (150 - a.fullWidth) / 2 + 'px';
+
+				a.play();
+
+			}
+		</script>
+		<!--<script>
+			(function($) {
+				$(window).load(function() {
+					$(".a").mCustomScrollbar();
+				});
+			})(jQuery);
+		</script>-->
+	</body>
+
+</html>
