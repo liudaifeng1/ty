@@ -1,0 +1,1068 @@
+var musicurl;
+var videourl;
+var wenjian;
+var vcf=0;
+function clcl(){
+	vcf++;
+	var aaa=document.getElementsByClassName("content");
+	var bbb=document.getElementsByClassName("content1");
+	if(vcf%2==0){
+		aaa[0].style.display="inline-block";
+	bbb[0].style.display="inline-block";
+	}
+	else{
+		aaa[0].style.display="none";
+	bbb[0].style.display="none";
+	}
+}
+
+function IsPC() {
+	var userAgentInfo = navigator.userAgent;
+	var Agents = ["Android", "iPhone",
+		"SymbianOS", "Windows Phone",
+		"iPad", "iPod"
+	];
+	var flag = true;
+	for(var v = 0; v < Agents.length; v++) {
+		if(userAgentInfo.indexOf(Agents[v]) > 0) {
+			flag = false;
+			break;
+		}
+	}
+	return flag;
+}
+$(document).ready(function(){
+	
+})
+window.onload = function() {
+	var f4 = document.getElementById("fg4"); //视频转换
+	var f2 = document.getElementById("fg2"); //视频录制
+	var f1 = document.getElementById("fg1"); //视频下载
+	var f3 = document.getElementById("fg3"); //音频录制
+	var f5 = document.getElementById("fg5"); //截屏
+
+	if(typeof(Storage) !== "undefined") {
+		if(sessionStorage.getItem("x1") != undefined) {
+			alert("yeah");
+		} else {
+			window.location.href = "DZ/index.html";
+		}
+	} else {
+		// 抱歉! 不支持 web 存储。
+	}
+
+	var rc = IsPC();
+	if(rc == false) {
+		alert("你目前使用的终端是手机端，有些功能不支持");
+		document.getElementById("mj").style.display = "none";
+		document.getElementById("body").style.backgroundImage="url(images/1200383920.jpg)";
+	} else {
+		alert("welcome");
+	}
+	document.getElementById("a").onfocus = function() {
+		document.getElementById("button").disabled = false;
+	}
+	$(".rr").each(function(inde) {
+		$(this).click(function() {
+			switch(inde) {
+				case 0:
+					f2.style.display = "";
+					f1.style.display = "none";
+					f3.style.display = "none";
+					f4.style.display = "none";
+					f5.style.display = "none";
+					break;
+				case 1:
+					f5.style.display = "";
+					f2.style.display = "none";
+					f1.style.display = "none";
+					f3.style.display = "none";
+					f4.style.display = "none";
+					break;
+				case 2:
+					f1.style.display = "";
+					f2.style.display = "none";
+					f5.style.display = "none";
+					f3.style.display = "none";
+					f4.style.display = "none";
+					break;
+				case 3:
+					f3.style.display = "";
+					f2.style.display = "none";
+					f1.style.display = "none";
+					f5.style.display = "none";
+					f4.style.display = "none";
+					break;
+				case 4:
+					f4.style.display = "";
+					f2.style.display = "none";
+					f1.style.display = "none";
+					f3.style.display = "none";
+					f5.style.display = "none";
+					break;
+			}
+		})
+	})
+}
+
+//function fhy1(){
+//	
+//	f1.style.display="";
+////	f2[0].style.display="none";
+////	f3[0].style.display="none";
+////	f4[0].style.display="none";
+//}
+//
+//function fhy2(){
+//	
+//	f2.style.display="";
+////	f3[0].style.display="none";
+////	f4[0].style.display="none";
+////	f1[0].style.display="none";
+//}
+//function fhy3(){
+//	
+//	f3.style.display="";
+////	f2[0].style.display="none";
+////	f4[0].style.display="none";
+////	f1[0].style.display="none";
+//}
+//function f4(){
+//	
+//	f4[0].style.display="";
+////	f1[0].style.display="none";
+////	f2[0].style.display="none";
+////	f3[0].style.display="none";
+//}
+
+//function rebuild() {
+//	document.getElementById("audio").src = "http://www.gbtags.com/gb/qrcode?t=http://liudaifeng.duapp.com/SW/new_file6.html&s=300";
+//}
+
+function back() {
+	window.history.back(-1);
+}
+
+function getObjectURL() {
+	//获取文件  
+	var file1 = $("#imgForm").find("input")[0].files[0];
+
+	//创建读取文件的对象  
+	var reader = new FileReader();
+
+	//创建文件读取相关的变量  
+	var imgFile;
+
+	//为文件读取成功设置事件  
+	reader.onload = function(e) {
+		imgFile = e.target.result;
+		$("#c").attr('src', imgFile);
+	};
+
+	//正式读取文件  
+	reader.readAsDataURL(file1);
+}
+
+function getObjectURL2() {
+	//获取文件  
+	var file1 = $("#imgForm").find("input")[1].files[0];
+
+	//创建读取文件的对象  
+	var reader = new FileReader();
+
+	//创建文件读取相关的变量  
+	var File6;
+
+	//为文件读取成功设置事件  
+	reader.onload = function(e) {
+		File6 = e.target.result;
+		musicurl = File6;
+		document.getElementById("fff").src = musicurl;
+	};
+
+	//正式读取文件  
+	reader.readAsDataURL(file1);
+}
+
+function getObjectURL3() {
+	//获取文件  
+	var file1 = $("#imgForm").find("input")[2].files[0];
+
+	//创建读取文件的对象  
+	var reader = new FileReader();
+
+	//创建文件读取相关的变量  
+	var File;
+
+	//为文件读取成功设置事件  
+	reader.onload = function(e) {
+		File = e.target.result;
+		videourl = File;
+		document.getElementById("vvv").src = videourl;
+		alert(videourl);
+	};
+
+	//正式读取文件  
+	reader.readAsDataURL(file1);
+}
+
+function getObjectURL4() {
+	//获取文件  
+	var file1 = $("#imgForm").find("input")[3].files[0];
+
+	//创建读取文件的对象  
+	var reader = new FileReader();
+
+	//创建文件读取相关的变量  
+	var File1;
+
+	//为文件读取成功设置事件  
+	reader.onload = function(e) {
+		File1 = e.target.result;
+		wenjian = File1;
+	};
+
+	//正式读取文件  
+	reader.readAsDataURL(file1);
+}
+
+//      function getObjectURL(node) {
+//          var imgURL = "";
+//          try {
+//              var file = null;
+//              if (node.files && node.files[0]) {
+//                  file = node.files[0];
+//              } else if (node.files && node.files.item(0)) {
+//                  file = node.files.item(0);
+//              }
+//              //Firefox 因安全性问题已无法直接通过input[file].value 获取完整的文件路径
+//              try {
+//                  //Firefox7.0
+//                  imgURL = file.getAsDataURL();
+//                  //alert("//Firefox7.0"+imgRUL);
+//              } catch (e) {
+//                  //Firefox8.0以上
+//                  imgURL = window.URL.createObjectURL(file);
+//                  //alert("//Firefox8.0以上"+imgRUL);
+//              }
+//          } catch (e) {      //这里不知道怎么处理了，如果是遨游的话会报这个异常
+//              //支持html5的浏览器,比如高版本的firefox、chrome、ie10
+//              if (node.files && node.files[0]) {
+//                  var reader = new FileReader();
+//                  reader.onload = function (e) {
+//                      imgURL = e.target.result;
+//                  };
+//                  reader.readAsDataURL(node.files[0]);
+//              }
+//          }
+//          return imgURL;
+//      }
+function ay() {
+	var a = document.getElementById("a");
+	var b = document.getElementById("b");
+	var c = document.getElementById("c");
+	var kk = document.getElementById("music");
+	var juo = document.getElementById("video");
+	var dwe = document.getElementById("doc");
+	var bv = a.innerHTML.replace(/\s/g, "");
+	if(bv == "") {
+		alert("content不能为空");
+		document.getElementById("button").disabled = true;
+	}
+	if(b.value == "") {
+		alert("请选择图片");
+		document.getElementById("button").disabled = true;
+	} else {
+		if(!/\.(jpg|jpeg|png|JPG|PNG|gif)$/.test(b.value)) {
+			alert("只能选择jpg/jpeg/png/gif格式的图片");
+			document.getElementById("button").disaplay = true;
+		} else {
+			if(a.innerHTML != "") {
+				getObjectURL();
+				if(kk.value != "") {
+					if(!/\.(mp3|ogg|mpeg|wav)$/.test(kk.value)) {
+						alert("不支持的音频格式");
+						musicurl = "#";
+					} else {
+						getObjectURL2();
+						document.getElementById("fff").style.display = "";
+					}
+				} else {
+					musicurl = "#";
+				}
+				if(juo.value != "") {
+					if(!/\.(mp4|ogg|webm|wmv)$/.test(juo.value)) {
+						alert("不支持的视频格式");
+						videourl = "#";
+					} else {
+						getObjectURL3();
+						document.getElementById("vvv").style.display = "";
+					}
+				} else {
+					videourl = "#";
+				}
+				if(dwe.value != "") {
+					if(!/\.(txt|rar|docx|pptx)$/.test(dwe.value)) {
+						alert("不支持的文件格式");
+						wenjian = "#";
+					} else {
+						getObjectURL4();
+					}
+				} else {
+					wenjian = "#";
+				}
+
+				setTimeout(function() {
+					var sdf = $("#c").attr("src");
+					console.log(sdf);
+					var tyu = document.getElementsByClassName("text")[0].innerHTML;
+					var time = new Date();
+					var hours = time.getHours();
+					var minutes = time.getMinutes();
+					var seconds = time.getSeconds();
+					if(time.getHours() < 10) {
+						hours = "0" + time.getHours();
+					}
+					if(time.getMinutes() < 10) {
+						minutes = "0" + time.getMinutes();
+					}
+					if(time.getSeconds() < 10) {
+						seconds = "0" + time.getSeconds();
+					}
+					var currentTime = time.getFullYear() + "年" + time.getMonth() + 1 + "月" + time.getDate() + "日" + "" + hours + ":" + minutes + ":" + seconds;
+					$.ajax({
+						type: "post",
+						url: "new_file10.php",
+						async: true,
+						data: {
+							sdf: sdf,
+							tyu: tyu,
+							currentTime: currentTime,
+							music: musicurl,
+							video: videourl,
+							wenj: wenjian
+						},
+						success: function(data2) {
+							if(data2 == "wrong") {
+								alert("数据库访问失败");
+							}
+							if(data2 == "success") {
+								alert("图书推荐成功!");
+							}
+							if(data2 == "fail") {
+								alert("啊哦，总有东西会阻碍你，不怕，再试一次!");
+							}
+						},
+						error: function() {
+							alert("ajax请求失败");
+						}
+					});
+				}, 500);
+			}
+		}
+	}
+}
+
+function emoji() {
+	document.getElementById("biaoq").innerHTML = "";
+	var array0 = ["qqFace/arclist/1.gif", "qqFace/arclist/2.gif", "qqFace/arclist/3.gif", "qqFace/arclist/4.gif", "qqFace/arclist/5.gif", "qqFace/arclist/6.gif", "qqFace/arclist/7.gif", "qqFace/arclist/8.gif", "qqFace/arclist/9.gif"];
+	var array4 = ["qqFace/arclist/10.gif", "qqFace/arclist/11.gif", "qqFace/arclist/12.gif", "qqFace/arclist/13.gif", "qqFace/arclist/14.gif", "qqFace/arclist/15.gif", "qqFace/arclist/16.gif"];
+	var array1 = ["qqFace/arclist/17.gif", "qqFace/arclist/18.gif", "qqFace/arclist/19.gif", "qqFace/arclist/20.gif", "qqFace/arclist/21.gif", "qqFace/arclist/22.gif", "qqFace/arclist/23.gif", "qqFace/arclist/24.gif"];
+	var array5 = ["qqFace/arclist/25.gif", "qqFace/arclist/26.gif", "qqFace/arclist/27.gif", "qqFace/arclist/28.gif", "qqFace/arclist/29.gif", "qqFace/arclist/30.gif", "qqFace/arclist/31.gif"]
+	var array2 = ["qqFace/arclist/32.gif", "qqFace/arclist/33.gif", "qqFace/arclist/34.gif", "qqFace/arclist/35.gif", "qqFace/arclist/36.gif", "qqFace/arclist/37.gif", "qqFace/arclist/38.gif", "qqFace/arclist/39.gif"];
+	var array6 = ["qqFace/arclist/40.gif", "qqFace/arclist/41.gif", "qqFace/arclist/42.gif", "qqFace/arclist/43.gif", "qqFace/arclist/44.gif", "qqFace/arclist/45.gif", "qqFace/arclist/46.gif"];
+	var array7 = ["qqFace/arclist/48.gif", "qqFace/arclist/49.gif", "qqFace/arclist/50.gif", "qqFace/arclist/51.gif", "qqFace/arclist/52.gif", "qqFace/arclist/53.gif", "qqFace/arclist/54.gif", "qqFace/arclist/55.gif"];
+	var array8 = ["qqFace/arclist/56.gif", "qqFace/arclist/57.gif", "qqFace/arclist/58.gif", "qqFace/arclist/59.gif", "qqFace/arclist/60.gif", "qqFace/arclist/61.gif", "qqFace/arclist/62.gif"];
+	var array9 = ["qqFace/arclist/63.gif", "qqFace/arclist/64.gif", "qqFace/arclist/65.gif", "qqFace/arclist/66.gif", "qqFace/arclist/67.gif", "qqFace/arclist/68.gif", "qqFace/arclist/69.gif"];
+	var array10 = ["qqFace/arclist/70.gif", "qqFace/arclist/71.gif", "qqFace/arclist/72.gif", "qqFace/arclist/73.gif", "qqFace/arclist/74.gif", "qqFace/arclist/75.gif"];
+	var array3 = ["img/47.gif"];
+	var sum = new Array();
+	sum = sum.concat(array0, array1, array2, array3, array4, array5, array6, array7, array8, array9, array10);
+	for(var vi = 0; vi < sum.length; vi++) {
+		var x1 = document.createElement("img");
+		var x2 = document.createAttribute("src");
+		var x3 = document.createAttribute("class");
+		x3.value = "biaoq";
+		x2.value = sum[vi];
+		x1.setAttributeNode(x2);
+		x1.setAttributeNode(x3);
+		document.getElementById("biaoq").appendChild(x1);
+		switch(vi) {
+			case 0:
+				document.getElementsByClassName("biaoq")[0].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[0];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 1:
+				document.getElementsByClassName("biaoq")[1].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[1];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 2:
+				document.getElementsByClassName("biaoq")[2].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[2];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 3:
+				document.getElementsByClassName("biaoq")[3].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[3];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 4:
+				document.getElementsByClassName("biaoq")[4].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[4];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 5:
+				document.getElementsByClassName("biaoq")[5].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[5];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 6:
+				document.getElementsByClassName("biaoq")[6].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[6];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 7:
+				document.getElementsByClassName("biaoq")[7].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[7];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 8:
+				document.getElementsByClassName("biaoq")[8].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[8];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 9:
+				document.getElementsByClassName("biaoq")[9].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[9];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 10:
+				document.getElementsByClassName("biaoq")[10].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[10];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 11:
+				document.getElementsByClassName("biaoq")[11].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[11];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 12:
+				document.getElementsByClassName("biaoq")[12].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[12];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 13:
+				document.getElementsByClassName("biaoq")[13].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[13];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 14:
+				document.getElementsByClassName("biaoq")[14].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[14];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 15:
+				document.getElementsByClassName("biaoq")[15].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[15];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 16:
+				document.getElementsByClassName("biaoq")[16].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[16];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 17:
+				document.getElementsByClassName("biaoq")[17].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[17];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 18:
+				document.getElementsByClassName("biaoq")[18].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[18];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 19:
+				document.getElementsByClassName("biaoq")[19].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[19];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 20:
+				document.getElementsByClassName("biaoq")[20].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[20];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 21:
+				document.getElementsByClassName("biaoq")[21].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[21];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 22:
+				document.getElementsByClassName("biaoq")[22].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[22];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 23:
+				document.getElementsByClassName("biaoq")[23].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[23];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 24:
+				document.getElementsByClassName("biaoq")[24].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[24];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 25:
+				document.getElementsByClassName("biaoq")[25].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[25];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 26:
+				document.getElementsByClassName("biaoq")[26].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[26];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 27:
+				document.getElementsByClassName("biaoq")[27].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[27];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 28:
+				document.getElementsByClassName("biaoq")[28].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[28];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 29:
+				document.getElementsByClassName("biaoq")[29].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[29];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 30:
+				document.getElementsByClassName("biaoq")[30].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[30];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 31:
+				document.getElementsByClassName("biaoq")[31].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[31];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 32:
+				document.getElementsByClassName("biaoq")[32].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[32];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 33:
+				document.getElementsByClassName("biaoq")[33].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[33];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 34:
+				document.getElementsByClassName("biaoq")[34].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[34];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 35:
+				document.getElementsByClassName("biaoq")[35].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[35];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 36:
+				document.getElementsByClassName("biaoq")[36].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[36];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 37:
+				document.getElementsByClassName("biaoq")[37].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[37];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 38:
+				document.getElementsByClassName("biaoq")[38].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[38];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 39:
+				document.getElementsByClassName("biaoq")[39].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[39];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 40:
+				document.getElementsByClassName("biaoq")[40].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[40];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 41:
+				document.getElementsByClassName("biaoq")[41].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[41];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 42:
+				document.getElementsByClassName("biaoq")[42].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[42];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 43:
+				document.getElementsByClassName("biaoq")[43].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[43];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 44:
+				document.getElementsByClassName("biaoq")[44].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[44];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 45:
+				document.getElementsByClassName("biaoq")[45].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[45];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 46:
+				document.getElementsByClassName("biaoq")[46].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[46];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 47:
+				document.getElementsByClassName("biaoq")[47].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[47];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 48:
+				document.getElementsByClassName("biaoq")[48].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[48];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 49:
+				document.getElementsByClassName("biaoq")[49].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[49];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 50:
+				document.getElementsByClassName("biaoq")[50].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[50];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 51:
+				document.getElementsByClassName("biaoq")[51].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[51];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 52:
+				document.getElementsByClassName("biaoq")[52].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[52];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 53:
+				document.getElementsByClassName("biaoq")[53].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[53];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 54:
+				document.getElementsByClassName("biaoq")[54].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[54];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 55:
+				document.getElementsByClassName("biaoq")[55].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[55];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 56:
+				document.getElementsByClassName("biaoq")[56].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[56];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 57:
+				document.getElementsByClassName("biaoq")[57].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[57];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 58:
+				document.getElementsByClassName("biaoq")[58].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[58];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 59:
+				document.getElementsByClassName("biaoq")[59].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[59];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 60:
+				document.getElementsByClassName("biaoq")[60].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[60];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 61:
+				document.getElementsByClassName("biaoq")[61].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[61];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 62:
+				document.getElementsByClassName("biaoq")[62].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[62];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 63:
+				document.getElementsByClassName("biaoq")[63].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[63];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 64:
+				document.getElementsByClassName("biaoq")[64].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[64];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 65:
+				document.getElementsByClassName("biaoq")[65].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[65];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 66:
+				document.getElementsByClassName("biaoq")[66].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[66];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 67:
+				document.getElementsByClassName("biaoq")[67].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[67];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 68:
+				document.getElementsByClassName("biaoq")[68].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[68];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 69:
+				document.getElementsByClassName("biaoq")[69].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[69];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 70:
+				document.getElementsByClassName("biaoq")[70].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[70];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 71:
+				document.getElementsByClassName("biaoq")[71].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[71];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 72:
+				document.getElementsByClassName("biaoq")[72].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[72];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 73:
+				document.getElementsByClassName("biaoq")[73].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[73];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+			case 74:
+				document.getElementsByClassName("biaoq")[74].onclick = function() {
+					var ki = document.createElement("img");
+					var ji = document.createAttribute("src");
+					ji.value = sum[74];
+					ki.setAttributeNode(ji);
+					document.getElementsByClassName("text")[0].appendChild(ki);
+				};
+				break;
+		}
+	}
+}
